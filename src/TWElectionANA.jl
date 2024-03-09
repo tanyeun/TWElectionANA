@@ -2,6 +2,7 @@ module TWElectionANA
 
 using XLSX
 using PrettyTables
+using FilePathsBase
 
 greet() = println("選舉數據分析")
 
@@ -74,7 +75,7 @@ end
 
 function get_f_head(year)
   if year == 2024
-    return "\\TWElectionANA\\data\\20240113全國開票數據\\總統副總統選舉\\"
+    return joinpath("TWElectionANA", "data", "20240113全國開票數據", "總統副總統選舉")
   else
     return nothing
   end
@@ -86,7 +87,7 @@ end
 
 function get_f_head_liwei(year)
   if year == 2024
-    return "\\TWElectionANA\\data\\20240113全國開票數據\\不分區立委\\"
+    return joinpath("TWElectionANA", "data", "20240113全國開票數據", "不分區立委")
   else
     return nothing
   end
@@ -243,7 +244,7 @@ function get_p_data(area, year)
     println("Year not supported!")
     return
   end
-  xf = XLSX.readxlsx(pwd()*f_head*raw_p_taipei_fname)
+  xf = XLSX.readxlsx(joinpath(pwd(), f_head, raw_p_taipei_fname))
   sh = xf[area]
   dict_p_taipei = Dict{String,Any}()
   dict_p_taipei["各區"] = []
@@ -329,7 +330,7 @@ function get_liwei_data(area, year)
     println("Year not supported!")
     return
   end
-  xf = XLSX.readxlsx(pwd()*f_head*raw_p_taipei_fname)
+  xf = XLSX.readxlsx(joinpath(pwd(), f_head, raw_p_taipei_fname))
   sh = xf[area]
   dict_p_taipei = Dict{String,Any}()
   dict_p_taipei["各區"] = []
