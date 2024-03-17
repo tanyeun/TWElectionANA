@@ -1,4 +1,17 @@
 # For Developer
+Usage:
+更新到 1.6.7 Julia
+1. 執行Julia應該在專案目錄上一層
+2. using Pkg (第一次安裝)
+   Pkg.add("Revise")
+   Pkg.add("FilePathsBase")
+3. using Revise ; using FilePathsBase
+4. ]
+5. activate TWElectionANA
+6. ctrl+c or backspace
+7. using TWElectionANA
+8. dtl = TWElectionANA.  <TAB> 查看指令
+9.dtl = TWElectionANA.get_p_data("新北市", 2024)
 
 ```
 # Open Julia terminal
